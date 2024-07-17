@@ -1,0 +1,58 @@
+import java.util.*;
+public class gradetracker
+{
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Welcome to the Student Grade Tracker!");
+        // Input the number of subjects or assignments
+        System.out.print("Enter the number of subjects or assignments: ");
+        int num = s.nextInt();  
+        // Array to store grades
+        double grades[] = new double[num];        
+        // Input grades for each subject or assignment
+        for (int i=0;i<num;i++) 
+        {
+            System.out.printf("Enter the grade for subject/assignment %d: ", i+1);
+            grades[i] = s.nextDouble();
+        }  
+        // Calculate average grade
+        double totalGrade = 0;
+        for (double grade : grades) 
+        {
+            totalGrade = totalGrade + grade;
+        }
+        double averageGrade = totalGrade / num;
+        // Display average grade
+        System.out.printf("Average Grade: %.2f\n", averageGrade);       
+        // Additional information (e.g., letter grade or GPA calculation)
+        displayAdditionalInfo(averageGrade);
+        s.close();
+    }
+    // Method to display additional information (e.g., letter grade, GPA)
+    public static void displayAdditionalInfo(double averageGrade) 
+    {
+        // Example: Letter grade calculation
+        String letterGrade;
+        if (averageGrade >= 90) 
+        {
+            letterGrade = "A";
+        } 
+        else if (averageGrade >= 80) {
+            letterGrade = "B";
+        } 
+        else if (averageGrade >= 70) {
+            letterGrade = "C";
+        } 
+        else if (averageGrade >= 60) {
+            letterGrade = "D";
+        }
+         else 
+        {
+            letterGrade = "F";
+        }
+        System.out.println("Overall Grade: " + letterGrade);
+        // Example: GPA calculation (assuming 4.0 scale)
+        double gpa = 4.0 * (averageGrade / 100);
+        System.out.printf("GPA: %.2f\n", gpa);
+    }
+}
